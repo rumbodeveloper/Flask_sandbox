@@ -9,8 +9,13 @@
 #
 #Date: '13/5/16'
 
+from constants import OPENWHEATHER_API_KEY
+import json
 import feedparser
 from flask import Flask, render_template, request
+import urllib2
+import urllib
+
 
 app = Flask(__name__)
 
@@ -33,10 +38,30 @@ def get_news(publication='elpais'):
         publication = query.lower()
 
     feed = feedparser.parse(RSS_FEEDS[publication])
+    weather = get_weather("Madrid,SPAIN")
     return render_template("home.html",
                            articles = feed['entries'][:5],
+                           weather=weather
                            )
+
+
+def get_weather(query):
+    api_url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="+OPENWHEATHER_API_KEY
+    query = urllib.quote(query)
+    url = api_url.format(query)
+    data = urllib2.urlopen(url).read()
+    parsed = json.loads(data)
+    weather = None
+    if parsed.get("weather"):
+        weather = {"description": parsed["weather"][0]["description"],
+                   "temperature": parsed["main"]["temp"],
+                   "city": parsed["name"],}
+    return weather
+
+
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+
 

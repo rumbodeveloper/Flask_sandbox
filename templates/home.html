@@ -12,6 +12,10 @@
     </form>
 
     <h1>Ultimas noticias</h1>
+    <h2>El tiempo actual en </h2>
+    <p>Ciudad:<b>{{ weather.city }}</b></p>
+    <p>{{ weather.description }}|{{ weather.temperature }}&#8451</p>
+
     {% for article in articles %}
     <b><a href="{{article.link}}">{{ article.title }}</a></b><br />
     <i>{{article.published}}</i>
