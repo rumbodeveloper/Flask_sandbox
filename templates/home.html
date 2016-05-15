@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Headlines</title>
+    <title>Ultimas noticias</title>
 </head>
 <body>
-    <h1>Headlines</h1>
+
+    <form>
+        <input type="text" name="publication" placeholder="search" />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <h1>Ultimas noticias</h1>
     {% for article in articles %}
     <b><a href="{{article.link}}">{{ article.title }}</a></b><br />
     <i>{{article.published}}</i>
