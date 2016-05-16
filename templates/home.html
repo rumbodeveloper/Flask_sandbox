@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Ultimas noticias</title>
+
+    <!-- css for general settings /-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}" />
+
+
 </head>
+
 <body>
 
 
+    <div id="header">
+        <div id="inner-header">
+            <h1>Ultimas noticias</h1>
+            <p>Ultimas noticias. Tiempo. Conversion de moneda</p>
+        </div>
+    </div>
 
-    <h1>Ultimas noticias</h1>
+    <div id="main">
+
     <h2>El tiempo actual en </h2>
     <p>Ciudad:<b>{{ weather.city }}, {{ weather.country }}</b></p>
     <p>{{ weather.description }} | {{ weather.temperature }}&#8451</p>
@@ -27,6 +41,8 @@
         <input type="text" name="city" placeholder="busqueda del tiempo que hace">
         <input type="submit" value="Submit">
     </form>
+
+
 
     <br/>
 
@@ -60,5 +76,6 @@
     <hr />
     {% endfor %}
 
+</div>
 </body>
 </html>
