@@ -17,7 +17,7 @@
 
      <form>
          <h2>Ultimas noticias en:</h2>
-        <input type="text" name="publication" placeholder="search" />
+        <input type="text" name="publication" placeholder="publicacion" />
         <input type="submit" value="Submit" />
     </form>
     <br/>
@@ -31,6 +31,23 @@
     <br/>
 
     <h2>Cambio</h2>
+        <form>
+            from:<select name="currency_from">
+            {% for currency in currencies %}
+            <option value="{{ currency }}" {{ 'selected="selected"' if currency_from == currency}}>{{ currency }}</option>
+            {% endfor %}
+            </select>
+
+            to:<select name="currency_to">
+            {% for currency in currencies %}
+            <option value="{{ currency }}" {{ 'selected="selected"' if currency_to == currency}}>{{ currency }}</option>
+            {% endfor %}
+           </select>
+            <input type="submit" value="Submit">
+
+        </form>
+
+
     <p>1 {{ currency_from }} = {{ currency_to }} cambio = {{ rate }}</p>
 
 
