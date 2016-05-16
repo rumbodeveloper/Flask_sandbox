@@ -6,15 +6,29 @@
 </head>
 <body>
 
-    <form>
-        <input type="text" name="publication" placeholder="search" />
-        <input type="submit" value="Submit" />
-    </form>
+
 
     <h1>Ultimas noticias</h1>
     <h2>El tiempo actual en </h2>
-    <p>Ciudad:<b>{{ weather.city }}</b></p>
-    <p>{{ weather.description }}|{{ weather.temperature }}&#8451</p>
+    <p>Ciudad:<b>{{ weather.city }}, {{ weather.country }}</b></p>
+    <p>{{ weather.description }} | {{ weather.temperature }}&#8451</p>
+    <br/>
+
+
+     <form>
+         <h2>Ultimas noticias en:</h2>
+        <input type="text" name="publication" placeholder="search" />
+        <input type="submit" value="Submit" />
+    </form>
+    <br/>
+
+    <form>
+        <h2>El tiempo actual en:</h2>
+        <input type="text" name="city" placeholder="busqueda del tiempo que hace">
+        <input type="submit" value="Submit">
+    </form>
+
+    <br/>
 
     {% for article in articles %}
     <b><a href="{{article.link}}">{{ article.title }}</a></b><br />

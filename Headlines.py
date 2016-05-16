@@ -26,24 +26,38 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
              'elpais':'feed://ep00.epimg.net/rss/elpais/portada.xml',}
 
+DEFAULTS = {'publication': 'elpais',
+            'city': 'Madrid,SPAIN'}
+
 
 
 @app.route('/')
 @app.route("/<publication>")
-def get_news(publication='elpais'):
-    query = request.args.get("publication")
+def home():
+    #obtener noticias de ultima hora customizadas
+    publication = request.args.get('publication')
+    if not publication:
+        publication = DEFAULTS['publication']
+    articles = get_news(publication)
+    #obtener el tiempo customizado
+    city = request.args.get('city')
+    if not city:
+        city = DEFAULTS['city']
+    weather = get_weather(city)
+    #renderizamos la pagina
+    return render_template("home.html", articles=articles, weather=weather)
+
+
+
+
+
+def get_news(query):
     if not query or query.lower() not in RSS_FEEDS:
-        publication = "elpais"
+        publication = DEFAULTS['publication']
     else:
         publication = query.lower()
-
     feed = feedparser.parse(RSS_FEEDS[publication])
-    weather = get_weather("Madrid,SPAIN")
-    return render_template("home.html",
-                           articles = feed['entries'][:5],
-                           weather=weather
-                           )
-
+    return feed['entries'][:5]
 
 def get_weather(query):
     api_url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="+OPENWHEATHER_API_KEY
@@ -55,7 +69,8 @@ def get_weather(query):
     if parsed.get("weather"):
         weather = {"description": parsed["weather"][0]["description"],
                    "temperature": parsed["main"]["temp"],
-                   "city": parsed["name"],}
+                   "city": parsed["name"],
+                   "country": parsed['sys']['country']}
     return weather
 
 
