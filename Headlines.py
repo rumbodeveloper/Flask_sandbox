@@ -37,6 +37,9 @@ DEFAULTS = {'publication': 'elpais',
 @app.route('/')
 @app.route("/<publication>")
 def home():
+    #obtener la cookie de consentimiento
+    consent = get_consent_status_with_fallback("consentimiento")
+
     #obtener noticias de ultima hora customizadas
     publication = get_value_with_fallback("publication")
     articles = get_news(publication)
@@ -52,13 +55,15 @@ def home():
 
     #renderizamos la pagina
     response = make_response(render_template("home.html",
+                           consent=consent,
                            articles=articles,
                            weather=weather,
                            currency_from=currency_from,
                            currency_to=currency_to,
                            rate=rate,
                            currencies=sorted(currencies)))
-    expires = datetime.datetime.now()+datetime.timedelta(days=15)
+    expires = datetime.datetime.now()+datetime.timedelta(days=7)
+    response.set_cookie("consentimiento",True,expires=expires)
     response.set_cookie("publication",publication,expires=expires)
     response.set_cookie("city",city,expires=expires)
     response.set_cookie("currency_from",currency_from,expires=expires)
@@ -110,6 +115,19 @@ def get_value_with_fallback(key):
     if request.cookies.get(key):
         return request.cookies.get(key)
     return DEFAULTS[key]
+
+
+def get_consent_status_with_fallback(key):
+    '''Function to handle retrieved cookies
+    its simply an ordereded loop-up'''
+    if request.cookies.get(key):
+        return request.cookies.get(key)
+    else:
+        return False
+
+
+
+
 
 
 if __name__ == '__main__':
