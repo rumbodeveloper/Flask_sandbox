@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimas noticias</title>
+
+    <!-- css for general settings /-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}" />
+   <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+    <script type="text/javascript">
+    window.cookieconsent_options = {"message":"Este sitio usa cookies para mejorar la experiencia de usuario","dismiss":"Lo tengo!","learnMore":"Mas información","link":"{{ url_for('politica_de_cookies') }}" ,"theme":"dark-bottom"};
+    </script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/cookieconsent.min.js') }}">
+
+    </script>
+<!-- End Cookie Consent plugin -->
+
+
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="inner-header">
+            <h1>Politica de cookies</h1>
+            <p>Esta pagina explica la politica de cookies</p>
+        </div>
+    </div>
+
+
+
+    <div id="main">
+
+        <form action={{ url_for("home")}}>
+            <input type="submit" value="Home" placeholder="Home">
+        </form>
+
+        <div class="entry-content content">
+
+
+  <h2>Política de Cookies</h2>
+            <p>Esta web, al igual que la mayoría de portales en Internet, usa cookies para mejorar la experiencia del usuario. A continuación encontrará información sobre qué son las cookies, qué tipo de cookies utiliza este portal, cómo puede desactivar las cookies en su navegador y cómo desactivar específicamente la instalación de cookies de terceros.</p>
+            <h3>¿Qué son las cookies?</h3>
+    <p>Las cookies son pequeños archivos que algunas plataformas, como las páginas web, pueden instalar en su ordenador, smartphone, tableta o televisión conectada. Sus funciones pueden ser muy variadas: almacenar sus preferencias de navegación, recopilar información estadística, permitir ciertas funcionalidades técnicas, etcétera. En ocasiones, las cookies se utilizan para almacenar información básica sobre los hábitos de navegación del usuario o de su equipo, hasta el punto, según los casos, de poder reconocerlo.</p>
+    <p>No dañan su ordenador ni ralentizan su funcionamiento. Puede eliminarlas en cualquier momento, o rechazarlas configurando el programa de navegación que utiliza.</p>
+    <h3>¿Por qué son importantes?</h3>
+    <p>Las cookies son útiles por varios motivos. Desde un punto de vista técnico, permiten que las páginas web funcionen de forma más ágil y adaptada a sus preferencias. </p>
+    <h3>¿Cómo utilizamos las cookies?</h3>
+<p> Utilizamos cookies propias, para recordar sus preferencias de publicación, ciudad de la que conocer el tiempo, o monedas sobre las que solicitó el tipo de cambio.</p>
+
+
+
+<h3>¿Cómo puedo configurar mis preferencias?</h3>
+<p>Puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones de su navegador de internet. En el caso en que las bloquee, es posible que ciertos servicios que necesitan su uso no estén disponibles para usted.<br />
+        Puede <strong><a href="http://es.wikihow.com/eliminar-las-cookies-del-navegador"> consultar este tutorial</a> que contiene instrucciones para los principales navegadores Web o seguir estas instrucciones:</strong></p>
+<ul>
+
+<li><strong>Internet Explorer</strong>: Herramientas -> Opciones de Internet -> Privacidad -> Configuración. Para más información, puede consultar el <a href="http://windows.microsoft.com/es-ES/windows/support">soporte de Microsoft</a> o la Ayuda del navegador.</li>
+<li><strong>Firefox</strong>: Herramientas -> Opciones -> Privacidad -> Historial -> Configuración Personalizada. Para más información, puede consultar el <a href="http://support.mozilla.org/es/home">soporte de Mozilla</a> o la Ayuda del navegador.</li>
+<li><strong>Chrome</strong>: Configuración -> Mostrar opciones avanzadas -> Privacidad -> Configuración de contenido. Para más información, puede consultar el <a href="http://support.google.com/chrome/?hl=es">soporte de Google</a> o la Ayuda del navegador.</li>
+<li><strong>Safari</strong>: Preferencias -> Seguridad. Para más información, puede consultar el <a href="http://www.apple.com/es/support/safari/">soporte de Apple</a> o la Ayuda del navegador.</li>
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

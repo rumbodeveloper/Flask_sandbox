@@ -7,23 +7,21 @@
 
     <!-- css for general settings /-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}" />
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+    <script type="text/javascript">
+    window.cookieconsent_options = {"message":"Este sitio usa cookies para mejorar la experiencia de usuario","dismiss":"Lo tengo!","learnMore":"Mas información","link":"{{ url_for('politica_de_cookies') }}" ,"theme":"dark-bottom"};
+    </script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/cookieconsent.min.js') }}">
+
+    </script>
+<!-- End Cookie Consent plugin -->
 
 
 </head>
 
 <body>
-    <!----TODO falta trabajar este banner y el css condicional si encontramos la cookie del consentimiento /-->
 
-    <div id="cookieBanner">
-        <div id="cookieBannerClose"><a href="#">cerrar este banner</a></div>
-        Este sitio web utiliza cookies exclusivamente para mejorar la experiencia de uso.
-        Si continuas navegando aceptas su uso.
-        <div id="cookieBannerActions">
-            <a class="noconsent" href="cookies.html">Learn about this website's cookies</a>
-            &mdash;
-            <a class="denyConsent noconsent" href="#">Disallow cookies</a>
-        </div>
-    </div>
 
 
 
