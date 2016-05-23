@@ -79,6 +79,12 @@ def robots():
     ''' devuelve el fichero robots.txt '''
     return send_from_directory(join(app.static_folder,"txt"),"robots.txt")
 
+@app.route('/favicon.ico')
+def favicon():
+    '''devuelve un favicon propio'''
+    return send_from_directory(join(app.static_folder, 'favicon'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 
 
 
