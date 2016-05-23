@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}" />
     <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
     <script type="text/javascript">
-    window.cookieconsent_options = {"message":"Este sitio usa cookies para mejorar la experiencia de usuario","dismiss":"Lo tengo!","learnMore":"Mas información","link":"{{ url_for('politica_de_cookies') }}" ,"theme":"dark-bottom"};
+    window.cookieconsent_options = {
+    "message":"Este sitio usa cookies para mejorar su experiencia como usuario. Si continua usandolo usted acepta su uso",
+    "dismiss":"Lo tengo!",
+    "learnMore":"Mas información",
+    "link":"{{ url_for('politica_de_cookies') }}" ,
+    "theme":"dark-bottom"};
     </script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/cookieconsent.min.js') }}">

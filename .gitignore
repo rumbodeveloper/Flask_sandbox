@@ -137,3 +137,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# ficheros locales
+constants.py
+cookie_law/

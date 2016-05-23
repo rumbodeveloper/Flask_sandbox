@@ -1,0 +1,2 @@
+User-agent: * #dice a todos los robots
+Disallow: /   #que no indexen nada de este sitio

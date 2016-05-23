@@ -13,7 +13,8 @@ from constants import OPENWHEATHER_API_KEY, OPENEXHANGE_API_KEY
 import datetime
 import json
 import feedparser
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, make_response, send_from_directory
+from os.path import join
 import urllib2
 import urllib
 
@@ -70,7 +71,15 @@ def home():
 
 @app.route("/politica_de_cookies")
 def politica_de_cookies():
+    ''' pagina con la politica de cookies'''
     return render_template("cookie_policy.html")
+
+@app.route("/robots.txt")
+def robots():
+    ''' devuelve el fichero robots.txt '''
+    return send_from_directory(join(app.static_folder,"txt"),"robots.txt")
+
+
 
 
 
