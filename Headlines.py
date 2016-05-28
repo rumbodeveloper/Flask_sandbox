@@ -26,7 +26,9 @@ app = Flask(__name__)
 RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'cnn':'http://rss.cnn.com/rss/edition.rss',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
-             'elpais':'feed://ep00.epimg.net/rss/elpais/portada.xml',}
+             'elpais':'feed://ep00.epimg.net/rss/elpais/portada.xml',
+             'confi': 'http://rss.elconfidencial.com/espana/',
+             'mercados': 'http://rss.elconfidencial.com/mercados/',}
 
 DEFAULTS = {'publication': 'elpais',
             'city': 'Madrid,SPAIN',
@@ -43,6 +45,7 @@ def home():
     #obtener noticias de ultima hora customizadas
     publication = get_value_with_fallback("publication")
     articles = get_news(publication)
+    publications = sorted(RSS_FEEDS.keys())
 
     #obtener el tiempo customizado
     city = get_value_with_fallback('city')
@@ -55,6 +58,7 @@ def home():
 
     #renderizamos la pagina
     response = make_response(render_template("home.html",
+                           publications =publications,
                            articles=articles,
                            weather=weather,
                            currency_from=currency_from,
