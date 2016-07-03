@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimas noticias</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" initial-scale=1 maximun-scale=1>
+
+    <!-- css for general settings /-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}" />
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+    <script type="text/javascript">
+    window.cookieconsent_options = {
+    "message":"Este sitio usa cookies para mejorar su experiencia como usuario. Si continua usandolo usted acepta su uso",
+    "dismiss":"Acepto y cierro este banner",
+    "learnMore":"Mas información",
+    "link":"{{ url_for('politica_de_cookies') }}" ,
+    "theme":"dark-bottom"};
+    </script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/cookieconsent.min.js') }}">
+
+    </script>
+<!-- End Cookie Consent plugin -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+
+</head>
+
+<body>
+
+
+
+
+    <div id="header">
+        <div id="inner-header">
+            <h1>Ultimas noticias</h1>
+            <p>Ultimas noticias. Tiempo. Conversion de moneda</p>
+        </div>
+    </div>
+
+    <div id="main">
+
+    <h2>El tiempo actual en </h2>
+    <p>Ciudad:<b>{{ weather.city }}, {{ weather.country }}</b></p>
+    <p>{{ weather.description }} | {{ weather.temperature }}&#8451</p>
+    <br/>
+
+
+     <form>
+         <h2>Ultimas noticias en:</h2>
+        <input type="text" name="publication" placeholder="publicacion" />
+        <input type="submit" value="Submit" />
+    </form>
+    <br/>
+
+    <form>
+        <h2>El tiempo actual en:</h2>
+        <input type="text" name="city" placeholder="busqueda del tiempo que hace">
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+    <br/>
+
+    <h2>Cambio</h2>
+        <form>
+            from:<select name="currency_from">
+            {% for currency in currencies %}
+            <option value="{{ currency }}" {{ 'selected="selected"' if currency_from == currency}}>{{ currency }}</option>
+            {% endfor %}
+            </select>
+
+            to:<select name="currency_to">
+            {% for currency in currencies %}
+            <option value="{{ currency }}" {{ 'selected="selected"' if currency_to == currency}}>{{ currency }}</option>
+            {% endfor %}
+           </select>
+            <input type="submit" value="Submit">
+
+        </form>
+
+
+    <p>1 {{ currency_from }} = {{ currency_to }} cambio = {{ rate }}</p>
+
+
+
+    {% for article in articles %}
+    <b><a href="{{article.link}}">{{ article.title }}</a></b><br />
+    <i>{{article.published}}</i>
+    <p>{{article.summary}}</p>
+
+    <hr />
+    {% endfor %}
+
+</div>
+</body>
+</html>
