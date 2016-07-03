@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
@@ -21,7 +23,7 @@
 </head>
 
 <body>
-
+{% block header %}
     <div id="header">
         <div id="inner-header">
             <h1>Politica de cookies</h1>
@@ -29,7 +31,9 @@
         </div>
     </div>
 
+{% endblock %}
 
+{% block main %}
 
     <div id="main">
 
@@ -66,7 +70,7 @@
 
 </div>
 
-
+{% endblock %}
 
 
 

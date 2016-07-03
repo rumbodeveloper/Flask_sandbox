@@ -31,70 +31,8 @@
 <body>
 
 
+{% block header %}{% endblock %}
+{% block main %}{% endblock %}
 
-
-    <div id="header">
-        <div id="inner-header">
-            <h1>Ultimas noticias</h1>
-            <p>Ultimas noticias. Tiempo. Conversion de moneda</p>
-        </div>
-    </div>
-
-    <div id="main">
-
-    <h2>El tiempo actual en </h2>
-    <p>Ciudad:<b>{{ weather.city }}, {{ weather.country }}</b></p>
-    <p>{{ weather.description }} | {{ weather.temperature }}&#8451</p>
-    <br/>
-
-
-     <form>
-         <h2>Ultimas noticias en:</h2>
-        <input type="text" name="publication" placeholder="publicacion" />
-        <input type="submit" value="Submit" />
-    </form>
-    <br/>
-
-    <form>
-        <h2>El tiempo actual en:</h2>
-        <input type="text" name="city" placeholder="busqueda del tiempo que hace">
-        <input type="submit" value="Submit">
-    </form>
-
-
-
-    <br/>
-
-    <h2>Cambio</h2>
-        <form>
-            from:<select name="currency_from">
-            {% for currency in currencies %}
-            <option value="{{ currency }}" {{ 'selected="selected"' if currency_from == currency}}>{{ currency }}</option>
-            {% endfor %}
-            </select>
-
-            to:<select name="currency_to">
-            {% for currency in currencies %}
-            <option value="{{ currency }}" {{ 'selected="selected"' if currency_to == currency}}>{{ currency }}</option>
-            {% endfor %}
-           </select>
-            <input type="submit" value="Submit">
-
-        </form>
-
-
-    <p>1 {{ currency_from }} = {{ currency_to }} cambio = {{ rate }}</p>
-
-
-
-    {% for article in articles %}
-    <b><a href="{{article.link}}">{{ article.title }}</a></b><br />
-    <i>{{article.published}}</i>
-    <p>{{article.summary}}</p>
-
-    <hr />
-    {% endfor %}
-
-</div>
 </body>
 </html>
