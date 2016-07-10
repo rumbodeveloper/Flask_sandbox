@@ -4,17 +4,19 @@ html{
 }
 
 body{
-    background: lightgray;
+    background: #e98d70;
     max-width: 900px;
     margin: 0 auto;
 }
 
 #header {padding-top: 5px;
-    background: lightsteelblue;}
+    color: white;
+    background-color: #aa4630;}
 
 #inner-header{padding-left: 20px;}
 
-#main{padding-left: 10px;}
+#main{padding-left: 10px;
+    color: darkslateblue;}
 
 
 input[type="text"],select{
@@ -27,12 +29,13 @@ input[type="text"],select{
 
 input[type="submit"]{
     padding: 5px 10px 5px 10px;
-    color: black;
-    background: lightsteelblue;
+    color: white;
+    background: #004983;
     border: none;
     box-shadow: 1px 1px 1px #4C6E91;
 }
 
 input[type="submit"]:hover{
-    background: steelblue;
+    background: lightsteelblue;
+    color: black;
 }
