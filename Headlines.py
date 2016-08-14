@@ -32,8 +32,8 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
 
 DEFAULTS = {'publication': 'elpais',
             'city': 'Madrid,SPAIN',
-            'currency_from':'EUR',
-            'currency_to':'USD',}
+            'currency_from':'BTC',
+            'currency_to':'EUR',}
 
 
 
@@ -123,7 +123,7 @@ def get_rates(frm,to):
     parsed = json.loads(all_currency).get('rates')
     frm_rate=parsed.get(frm.upper())
     to_rate = parsed.get(to.upper())
-    return (to_rate/frm_rate,parsed.keys())
+    return ("{:.2f}".format(to_rate/frm_rate),parsed.keys())
 
 def get_value_with_fallback(key):
     '''Function to handle retrieved cookies
