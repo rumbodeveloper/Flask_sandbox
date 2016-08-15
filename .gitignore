@@ -139,4 +139,4 @@ fabric.properties
 
 # ficheros locales
 constants.py
-cookie_law/
+app/cookie_law/
