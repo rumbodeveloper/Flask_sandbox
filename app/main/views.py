@@ -24,6 +24,10 @@ from . import main
 
 
 
+
+
+
+
 RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'cnn':'http://rss.cnn.com/rss/edition.rss',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
@@ -79,15 +83,16 @@ def politica_de_cookies():
     ''' pagina con la politica de cookies'''
     return render_template("cookie_policy.html")
 
-@main.route("/robots.txt")
+@main.route('/robots.txt')
 def robots():
     ''' devuelve el fichero robots.txt '''
-    return send_from_directory(join(app.static_folder,"txt"),"robots.txt")
+    return send_from_directory(join(main.static_folder, 'txt'),
+                               'robots.txt')
 
 @main.route('/favicon.ico')
 def favicon():
     '''devuelve un favicon propio'''
-    return send_from_directory(join(app.static_folder, 'favicon'),
+    return send_from_directory(join(main.static_folder, 'favicon'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
@@ -101,7 +106,7 @@ def get_news(query):
     else:
         publication = query.lower()
     feed = feedparser.parse(RSS_FEEDS[publication])
-    return feed['entries'][:8]
+    return feed['entries'][:8]#numero de feeds a mostrar
 
 def get_weather(query):
     api_url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="+OPENWHEATHER_API_KEY
