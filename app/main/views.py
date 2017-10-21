@@ -22,12 +22,6 @@ from . import main
 
 
 
-
-
-
-
-
-
 RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'cnn':'http://rss.cnn.com/rss/edition.rss',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
@@ -35,7 +29,7 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'confi': 'http://rss.elconfidencial.com/espana/',
              'mercados': 'http://rss.elconfidencial.com/mercados/',
              'vanguardia':'feed://www.lavanguardia.com/mvc/feed/rss/home',
-             'periodico':'feed: // www.elperiodico.com / es / rss / rss_portada.xml'}
+             'periodico':'http://www.elperiodico.com/es/rss/rss_portada.xml'}
 
 DEFAULTS = {'publication': 'elpais',
             'city': 'Madrid,SPAIN',
@@ -102,7 +96,7 @@ def get_news(query):
     else:
         publication = query.lower()
     feed = feedparser.parse(RSS_FEEDS[publication])
-    return feed['entries'][:8]#numero de feeds a mostrar
+    return feed['entries'][:10]#numero de feeds a mostrar
 
 def get_weather(query):
     api_url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="+OPENWHEATHER_API_KEY
