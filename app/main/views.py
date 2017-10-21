@@ -33,7 +33,8 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
              'elpais':'feed://ep00.epimg.net/rss/elpais/portada.xml',
              'confi': 'http://rss.elconfidencial.com/espana/',
-             'mercados': 'http://rss.elconfidencial.com/mercados/',}
+             'mercados': 'http://rss.elconfidencial.com/mercados/',
+             'vanguardia':'feed://www.lavanguardia.com/mvc/feed/rss/home',}
 
 DEFAULTS = {'publication': 'elpais',
             'city': 'Madrid,SPAIN',
